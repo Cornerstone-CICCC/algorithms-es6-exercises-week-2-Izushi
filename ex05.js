@@ -19,6 +19,18 @@ Use some sort of looping. Do Not use String.prototype.replace
 
 const urlEncode = function (text) {
   // Put your solution here
+  let url;
+  let wordsArr = text.trim().split(' ');
+  wordsArr.forEach((word, index) => {
+    if (word !== ' ') {
+      if (index === 0) {
+        url = word;
+      } else {
+        url += `%20${word}`;
+      }
+    }
+  });
+  return url;
 };
 
 console.log(urlEncode("cornerstone college")); //cornerstone%20college
