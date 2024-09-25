@@ -8,6 +8,21 @@ Create a function named conditionalSum that will be given an array of numbers an
 
 const conditionalSum = function (values, condition) {
   // Your code here
+  let total = 0;
+  if (condition === "even") {
+    values.filter(value => {
+      if (value % 2 === 0) {
+        total += value;
+      }
+    })
+  } else {
+    values.filter(value => {
+      if (value % 2 === 1) {
+        total += value;
+      }
+    })
+  }
+  return total;
 };
 
 console.log(conditionalSum([1, 2, 3, 4, 5], "even")); // 6
