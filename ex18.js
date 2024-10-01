@@ -24,6 +24,16 @@ Create a function named squareCode that will receive a message, and return the s
 
 const squareCode = function (message) {
   // Put your solution here
+  let messageNoSpace = message.replace(/ /g, "");
+  let squareRoot = Math.ceil(Math.sqrt(messageNoSpace.length));
+  let squareCode = "";
+  for (let i = 0; i < squareRoot; i++) {
+    for (let j = i; j < messageNoSpace.length; j += squareRoot) {
+      squareCode += messageNoSpace[j];
+    }
+    squareCode += " ";
+  }
+  return squareCode.trim();
 };
 
 console.log(squareCode("chill out")); // clu hlt io
