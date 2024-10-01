@@ -23,6 +23,14 @@ Create a function named urlDecode that will receive a URL encoded string, and re
 
 const urlDecode = function (text) {
   // Put your solution here
+  let obj = {};
+  let keyValueArr = text.split('&');
+  keyValueArr.forEach(keyValue => {
+    let [key, value] = keyValue.split('=');
+    obj[key] = value.replace(/%20/g, ' ');
+  });
+
+  return obj;
 };
 
 console.log(urlDecode("duck=rubber")); //{duck: "rubber"}
