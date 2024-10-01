@@ -9,6 +9,15 @@ Create a function named multiplicationTable that receives a number maxValue as i
 
 const multiplicationTable = function (maxValue) {
   // Your code here
+  let multiplication = "";
+  for (let i = 1; i <= maxValue; i++) {
+    let numArr = [];
+    for (let j = 1; j <= maxValue; j++) {
+      numArr.push(i * j);
+    }
+    multiplication += numArr.join(" ") + "\n";
+  }
+  return multiplication;
 };
 
 console.log(multiplicationTable(1));
