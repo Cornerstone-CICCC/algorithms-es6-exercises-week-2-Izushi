@@ -29,24 +29,36 @@ const PI = 3.14159;
 
 const sphereVolume = function (radius) {
   // Code here!
+  return (4 / 3) * PI * radius * radius * radius;
 };
 
 console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189); //true
 
 const coneVolume = function (radius, height) {
   // And here!
+  return (1 / 3) * PI * radius * radius * height;
 };
 
 console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49); //true
 
 const prismVolume = function (height, width, depth) {
   // Probably here too!
+  return height * width * depth;
 };
 
 console.log(prismVolume(3, 4, 5) === 60); //true
 
 const totalVolume = function (solids) {
   // Code here? Yup!
+  let = totalVol = 0;
+  solids.forEach(solid => {
+    if (solid.type === "sphere") {
+      totalVol += sphereVolume(solid.radius);
+    } else if (solid.type === "cone") {
+      totalVol += coneVolume(solid.radius, solid.height);
+    }
+  });
+  return totalVol
 };
 
 const largeSphere = {
