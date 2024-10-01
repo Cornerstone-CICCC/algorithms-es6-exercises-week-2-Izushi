@@ -15,8 +15,64 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 
 */
 
-const makeCaze = function (input, caze) {
-  // Put your solution here
+const makeCaze = function (inputString, caze) {
+  let formattedString = "";
+  // if (Array.isArray(caze)) {
+  //   caze.forEach(caseType => {
+  //     inputString = makeCaze(inputString, caseType);
+  //   });
+  //   // return inputString;
+  // }
+
+  switch (caze) {
+    case "camel":
+      formattedString = inputString.split(" ").map((word, index) => {
+        if (index === 0) {
+          return word.toLowerCase();
+        }
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join("");
+      break;
+    case "pascal":
+      formattedString = inputString.split(" ").map(word => {
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join("");
+      break;
+    case "upper":
+      formattedString = inputString.toUpperCase();
+      break;
+    case "snake":
+      formattedString = inputString.split(" ").join("_").toLowerCase();
+      break;
+    case "kebab":
+      formattedString = inputString.split(" ").join("-").toLowerCase();
+      break;
+    case "title":
+      formattedString = inputString.split(" ").map(word => {
+        return word[0].toUpperCase() + word.slice(1).toLowerCase();
+      }).join(" ");
+      break;
+    case "vowel":
+      formattedString = inputString.split("").map(char => {
+        if (char.match(/[aeiou]/)) {
+          return char.toUpperCase();
+        }
+        return char;
+      }).join("");
+      break;
+    case "consonant":
+      formattedString = inputString.split("").map(char => {
+        if (char.match(/[^aeiou]/)) {
+          return char.toUpperCase();
+        }
+        return char;
+      }).join("");
+      break;
+    default:
+      console.log("Unknown format");
+  }
+
+  return formattedString;
 };
 
 console.log(makeCaze("this is a string", "camel")); // thisIsAString
