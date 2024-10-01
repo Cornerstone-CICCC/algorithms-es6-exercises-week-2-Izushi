@@ -24,6 +24,30 @@ Penny (1¢)
 
 const calculateChange = function (total, cash) {
   // Your code here
+  let exchange = cash - total;
+  const changeObj = {};
+
+  const cashTypeObj = [
+    { name: "twentyDollar", value: 2000 },
+    { name: "tenDollar", value: 1000 },
+    { name: "fiveDollar", value: 500 },
+    { name: "twoDollar", value: 200 },
+    { name: "oneDollar", value: 100 },
+    { name: "quarter", value: 25 },
+    { name: "dime", value: 10 },
+    { name: "nickel", value: 5 },
+    { name: "penny", value: 1 }
+  ];
+
+  for (const cashType of cashTypeObj) {
+    if (exchange >= cashType.value) {
+      const count = Math.floor(exchange / cashType.value);
+      exchange -= count * cashType.value;
+      changeObj[cashType.name] = count;
+    }
+  }
+
+  return changeObj;
 };
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
